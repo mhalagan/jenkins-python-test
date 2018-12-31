@@ -9,7 +9,7 @@ pipeline {
     stage('Build environment') {
       steps {
         echo 'Building virtualenv'
-        sh ''' /home/jenkins/miniconda3/bin/conda create --yes -n ${BUILD_TAG} python
+        sh '''conda create --yes -n ${BUILD_TAG} python
                         source activate ${BUILD_TAG}
                         pip install -r requirements/dev.txt
                     '''
@@ -102,7 +102,7 @@ pipeline {
     }
   }
   environment {
-    PATH = "/home/jenkins/miniconda3/bin:$PATH"
+    PATH = "/var/jenkins_home/miniconda3/bin:$PATH"
   }
   post {
     always {
